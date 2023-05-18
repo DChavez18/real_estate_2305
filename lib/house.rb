@@ -7,7 +7,7 @@ class House
     end
 
     def price
-        @price.gsub("$", "").to_i
+        @price.delete("$").to_i
     end
 
     def add_room(room)
@@ -15,11 +15,12 @@ class House
     end
 
     def above_market_average?
-        if @price.to_i > 500000
-            true
-        else
-            false
-        end
+        # if @price.to_i > 500000
+        #     true
+        # else
+        #     false
+        # end
+        price > 500000
     end
 
     def rooms_from_category(category)
@@ -27,10 +28,13 @@ class House
     end
 
     def area
-        @rooms.sum { |room| room.length * room.width.to_i }
+        # @rooms.sum { |room| room.length * room.width.to_i }
+        @rooms.sum do |room|
+            room.area
+        end
     end
 
     def details
-        {"price" => 400000, "address" => "123 sugar lane"}
+        {"price" => price, "address" => @address}
     end
 end
