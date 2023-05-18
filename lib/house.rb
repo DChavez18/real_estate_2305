@@ -9,4 +9,8 @@ class House
     def price
         @price.gsub("$", "").to_i
     end
+
+    def add_room(room)
+        @rooms << room
+    end
 end
