@@ -27,6 +27,10 @@ class House
     end
 
     def area
-        
+        @rooms.sum { |room| room.length * room.width.to_i }
+    end
+
+    def details
+        {"price" => 400000, "address" => "123 sugar lane"}
     end
 end
